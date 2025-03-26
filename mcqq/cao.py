@@ -12,20 +12,19 @@ def quiz(questions, player_name):
     points = 0
     selected_questions = random.sample(questions, 4)
     result_filename = f"{player_name}.txt"
-    
-    with open(result_filename, "w") as result_file:
-        for q, correct_answer in selected_questions:
-            print(q)
-            player_answer = input().lower()
-            
-            result_file.write(f"Question: {q}\n")
-            result_file.write(f"Your Answer: {player_answer}\n")
-            result_file.write(f"Correct Answer: {correct_answer}\n\n")
-            
-            if player_answer == correct_answer:
-                points += 1
-        
-        result_file.write(f"Total Score: {points}/4\n")
+    result_file = open(result_filename, "w")
+
+    for q, correct_answer in selected_questions:
+        print(q)
+        player_answer = input().lower()
+        result_file.write(f"Question: {q}\n")
+        result_file.write(f"Your Answer: {player_answer}\n")
+        result_file.write(f"Correct Answer: {correct_answer}\n\n")
+        if player_answer == correct_answer:
+            points += 1
+
+    result_file.write(f"Total Score: {points}/4\n")
+    result_file.close()
 
 name = input("Welcome to the quiz!\nEnter your name: ")
 print("1 -> Science\n2 -> History\n3 -> Geography\n")
