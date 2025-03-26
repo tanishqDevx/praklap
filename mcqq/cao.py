@@ -2,11 +2,12 @@ import random
 
 def load_questions(filename):
     questions = []
-    with open(filename, "r") as file:
-        for line in file:
-            line = line.strip()
-            question, answer = line.split("   ")
-            questions.append((question, answer))
+    file = open(filename, "r")
+    for line in file:
+        line = line.strip()
+        question, answer = line.split("   ")
+        questions.append((question, answer))
+    file.close()
     return questions
 
 def quiz(questions):
