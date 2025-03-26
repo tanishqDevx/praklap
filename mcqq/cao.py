@@ -1,7 +1,13 @@
 import random
 
 def load_questions(filename):
-    return [tuple(line.strip().split("   ")) for line in open(filename, "r")]
+    questions = []
+    with open(filename, "r") as file:
+        for line in file:
+            line = line.strip()
+            question, answer = line.split("   ")
+            questions.append((question, answer))
+    return questions
 
 def quiz(questions):
     points = 0
